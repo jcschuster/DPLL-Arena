@@ -6,7 +6,7 @@ Put your provers in the folder `solver` in a format that is executable via `./<y
 
 ## Input and Output Format
 
-Your prover should accept a string in DIMACS-syntax that represents a SAT problem in clause normal form (CNF). This string is guaranteed to fulfil the requirements given in the provided paper on DIMACS (variable occurrence etc.). **TODO**: Test input string for newline
+Your prover should accept a string in DIMACS-syntax that represents a SAT problem in clause normal form (CNF) as command line argument. This string is guaranteed to fulfil the requirements given in the provided paper on DIMACS (variable occurrence etc.). The lines in this string are separated by `\n` characters.
 
 The system expects one of two outputs:
 
