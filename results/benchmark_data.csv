@@ -1,0 +1,7 @@
+solver,problem,status,time_sec,memory_kb,correct,note
+dummyA.py,Gen_PHP_5_4,UNSAT,0.04,16824,True,UNSAT
+dummyA.py,Gen_Rand_3SAT_100var,UNSAT,0.14,83800,False,"Wrong Result (Expected SAT, Got UNSAT)"
+dummyA.py,uf50-011.cnf,SAT,0.07,37592,False,"Invalid Model (Clause [14, 31, -18] failed)"
+dummyA.py,uf50-0166.cnf,UNSAT,0.04,23440,False,"Wrong Result (Expected SAT, Got UNSAT)"
+dummyA.py,uuf50-010.cnf,UNSAT,0.08,46076,True,UNSAT
+dummyA.py,uf100-04.cnf,UNSAT,0.04,23784,False,"Wrong Result (Expected SAT, Got UNSAT)"
