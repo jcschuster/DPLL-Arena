@@ -17,10 +17,12 @@ RESULTS_FILE = os.path.join(RESULTS_DIR, "benchmark_data.csv")
 TIMEOUT_SECONDS = 30
 
 BENCHMARK_SUITE = [
+    ("Gen_Easy_1Sat", ["randkcnf", "2", "2", "1"], "UNKNOWN"),
     ("Gen_PHP_5_4", ["php", "5", "4"], "UNSAT"),
     ("Gen_Rand_3SAT_100var", ["--seed", "42", "randkcnf",
      "3", "100", "420"], "SAT"),
 ]
+
 
 def discover_static_problems():
     """Scans /app/problems for .cnf files and adds them to the suite."""
@@ -38,7 +40,7 @@ def discover_static_problems():
         BENCHMARK_SUITE.append((f, path, expected))
 
 
-def parse_output(stdout_str, stderr_str):
+def parse_output(stdout_str, stderr_str, exit_code):
     """Parses time, memory, status (SAT/UNSAT), and model (assignments)."""
     mem_match = re.search(
         r"Maximum resident set size \(kbytes\): (\d+)", stderr_str)
@@ -47,6 +49,12 @@ def parse_output(stdout_str, stderr_str):
     time_sec = float(time_match.group(1)) if time_match else 0.0
 
     status = "ERROR"
+
+    if exit_code == 124:
+        status = "TIMEOUT"
+    elif exit_code not in {0, 10, 20}:
+        print(f"Warning: Solver exited with code {exit_code}")
+
     if "s SATISFIABLE" in stdout_str:
         status = "SAT"
     elif "s UNSATISFIABLE" in stdout_str:
@@ -119,10 +127,12 @@ def generate_plots(df):
 
     plt.figure(figsize=(10, 6))
     pivot_time = df.pivot(index='problem', columns='solver', values='time_sec')
-    pivot_time.plot(kind='bar', width=0.8, rot=45)
+    pivot_time.plot(kind='bar', width=0.8, rot=45, logy=True)
     plt.axhline(y=TIMEOUT_SECONDS, color='r', linestyle='--', label='Timeout')
-    plt.title('Solver Execution Time')
-    plt.ylabel('Seconds')
+    plt.title('Solver Execution Time (Log Scale)')
+    plt.ylabel('Seconds (Log Scale)')
+    plt.legend(loc='upper right')
+    plt.grid(visible=True, which="both", axis="y", linestyle="--", alpha=0.5)
     plt.tight_layout()
     plt.savefig(os.path.join(RESULTS_DIR, 'benchmark_time.png'))
     plt.close()
@@ -162,7 +172,7 @@ def run_benchmark():
                 subprocess.run(["cnfgen"] + source, stdout=tmp_cnf, check=True)
             else:
                 shutil.copyfile(source, tmp_cnf.name)
-            
+
             tmp_cnf.seek(0)
 
             for solver_name in solvers:
@@ -173,7 +183,11 @@ def run_benchmark():
                 elif solver_name.endswith(".ex") or solver_name.endswith(".exs"):
                     base_cmd = f"elixir {solver_path}"
                 else:
-                    base_cmd = f"./{solver_path}"
+                    try:
+                        os.chmod(solver_path, 0o755)
+                    except OSError:
+                        pass
+                    base_cmd = f"{solver_path}"
 
                 cmd = f"cat {tmp_cnf.name} | /usr/bin/time -v timeout {TIMEOUT_SECONDS}s {base_cmd}"
 
@@ -182,8 +196,16 @@ def run_benchmark():
                     res = subprocess.run(
                         cmd, shell=True, executable='/bin/bash', capture_output=True, text=True)
 
-                    mem, duration, status, model = parse_output(
-                        res.stdout, res.stderr)
+                    try:
+                        mem, duration, status, model = parse_output(
+                            res.stdout, res.stderr, res.returncode)
+                    except:
+                        status = "ERROR"
+
+                    if status == "ERROR":
+                        print(f"\n[DEBUG] Stderr for {solver_name}:\n{res.stderr}"
+                              f"\n[DEBUG] Stdout for {solver_name}:\n{res.stdout}")
+
                     is_correct, note = verify_correctness(
                         tmp_cnf.name, status, model, expected)
 
@@ -208,7 +230,9 @@ def run_benchmark():
         generate_plots(df)
 
         print("\n--- Correctness Report ---")
-        print(df[["solver", "problem", "status", "correct", "note"]].to_string())
+        report_cols = ["problem", "solver",
+                       "status", "correct", "time_sec", "note"]
+        print(df[report_cols].set_index(["problem", "solver"]).to_string())
     else:
         print("No results to save")
 
