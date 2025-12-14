@@ -10,7 +10,7 @@ Your prover should **read a string from stdin** in DIMACS-syntax that represents
 
 The system expects one of two outputs:
 
--   `s SATISFIABLE` means that the prover can satisfy the problem. A variable assignment can be given with an additional line `v <VARIABLES>` where `<VARIABLES>` contains of positive and negative numbers representing the assignment (true or false) to the respective variable and may end in "0" (e.g., `v 1 -2 3 0`). Note that the correctnes of the model will be checked by the system.
+-   `s SATISFIABLE` means that the prover can satisfy the problem. A variable assignment can be given with an additional line `v <VARIABLES>` where `<VARIABLES>` contains of positive and negative numbers representing the assignment (true or false) to the respective variable and may end in "0" (e.g., `v 1 -2 3 0`). Note that the correctness of the model will be checked by the system.
 -   `s UNSATISFIABLE` means that the prover can't find a variable assignment that satisfies the problem. A model (`v <VARIABLES>`) can also be given in the same fashion.
 
 ## Build the image
