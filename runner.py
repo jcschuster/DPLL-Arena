@@ -61,13 +61,12 @@ def parse_output(stdout_str, stderr_str, exit_code):
         status = "UNSAT"
 
     model = []
-    if status == "SAT":
-        for line in stdout_str.splitlines():
-            if line.startswith("v "):
-                parts = line[2:].strip().split()
-                for p in parts:
-                    if p != '0':
-                        model.append(int(p))
+    for line in stdout_str.splitlines():
+        if line.startswith("v "):
+            parts = line[2:].strip().split()
+            for p in parts:
+                if p != '0':
+                    model.append(int(p))
 
     return mem_kb, time_sec, status, model
 
@@ -79,6 +78,10 @@ def verify_correctness(cnf_path, status, model, expected_result):
         solver = Solver()
         formula = CNF(from_file=cnf_path)
         solver.append_formula(formula)
+        match solver.solve():
+            case True: "SAT"
+            case False: "UNSAT"
+            case None: "UNKNOWN"
         if solver.solve():
             expected_result = "SAT"
         else:
@@ -102,7 +105,7 @@ def verify_correctness(cnf_path, status, model, expected_result):
 
     if status == "UNSAT":
         if not model:
-            return True, "UNSAT"
+            return True, "UNSAT but no model provided"
 
         formula = CNF(from_file=cnf_path)
         model_set = set(model)
@@ -114,9 +117,9 @@ def verify_correctness(cnf_path, status, model, expected_result):
                 break
 
         if countersat:
-            True, "Countermodel Verified"
+            return True, "Countermodel Verified"
         else:
-            False, "Invalid Countermodel"
+            return False, "Invalid Countermodel"
 
     return False, "Solver Error"
 
