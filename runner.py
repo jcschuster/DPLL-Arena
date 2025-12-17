@@ -44,9 +44,32 @@ def parse_output(stdout_str, stderr_str, exit_code):
     """Parses time, memory, status (SAT/UNSAT), and model (assignments)."""
     mem_match = re.search(
         r"Maximum resident set size \(kbytes\): (\d+)", stderr_str)
-    time_match = re.search(r"User time \(seconds\): ([\d\.]+)", stderr_str)
+    cpu_time_match = re.search(r"User time \(seconds\): ([\d\.]+)", stderr_str)
+    wall_time_match = re.search(
+        r"Elapsed \(wall clock\) time.*: (\d+(?::\d+){1,2}(?:\.\d+)?)", stderr_str)
     mem_kb = int(mem_match.group(1)) if mem_match else 0
-    time_sec = float(time_match.group(1)) if time_match else 0.0
+    cpu_time_sec = float(cpu_time_match.group(1)) if cpu_time_match else 0.0
+
+    wall_time_str = wall_time_match.group(1) if wall_time_match else None
+
+    if wall_time_str:
+        parts = wall_time_str.split(':')
+        try:
+            if len(parts) == 3:
+                h = int(parts[0])
+                m = int(parts[1])
+                s = float(parts[2])
+            elif len(parts) == 2:
+                h = 0
+                m = int(parts[0])
+                s = float(parts[1])
+            else:
+                raise ValueError("Unexpected time format")
+            wall_time_sec = h * 3600 + m * 60 + s
+        except (ValueError, TypeError):
+            wall_time_sec = 0.0
+    else:
+        wall_time_sec = 0.0
 
     status = "ERROR"
 
@@ -68,7 +91,7 @@ def parse_output(stdout_str, stderr_str, exit_code):
                 if p != '0':
                     model.append(int(p))
 
-    return mem_kb, time_sec, status, model
+    return mem_kb, wall_time_sec, cpu_time_sec, status, model
 
 
 def verify_correctness(cnf_path, status, model, expected_result):
@@ -129,7 +152,8 @@ def generate_plots(df):
     print("Generating plots...", end=" ")
 
     plt.figure(figsize=(10, 6))
-    pivot_time = df.pivot(index='problem', columns='solver', values='time_sec')
+    pivot_time = df.pivot(
+        index='problem', columns='solver', values='wall_sec')
     pivot_time.plot(kind='bar', width=0.8, rot=45, logy=True)
     plt.axhline(y=TIMEOUT_SECONDS, color='r', linestyle='--', label='Timeout')
     plt.title('Solver Execution Time (Log Scale)')
@@ -138,6 +162,18 @@ def generate_plots(df):
     plt.grid(visible=True, which="both", axis="y", linestyle="--", alpha=0.5)
     plt.tight_layout()
     plt.savefig(os.path.join(RESULTS_DIR, 'benchmark_time.png'))
+    plt.close()
+
+    plt.figure(figsize=(10, 6))
+    pivot_time = df.pivot(
+        index='problem', columns='solver', values='cpu_sec')
+    pivot_time.plot(kind='bar', width=0.8, rot=45, logy=True)
+    plt.title('Solver CPU Time (Log Scale)')
+    plt.ylabel('Seconds (Log Scale)')
+    plt.legend(loc='upper right')
+    plt.grid(visible=True, which="both", axis="y", linestyle="--", alpha=0.5)
+    plt.tight_layout()
+    plt.savefig(os.path.join(RESULTS_DIR, 'benchmark_cpu_time.png'))
     plt.close()
 
     plt.figure(figsize=(10, 6))
@@ -200,7 +236,7 @@ def run_benchmark():
                         cmd, shell=True, executable='/bin/bash', capture_output=True, text=True)
 
                     try:
-                        mem, duration, status, model = parse_output(
+                        mem, duration, cpu_time, status, model = parse_output(
                             res.stdout, res.stderr, res.returncode)
                     except:
                         status = "ERROR"
@@ -218,7 +254,8 @@ def run_benchmark():
                         "solver": solver_name,
                         "problem": prob_name,
                         "status": status,
-                        "time_sec": duration,
+                        "wall_sec": duration,
+                        "cpu_sec": cpu_time,
                         "memory_kb": mem,
                         "correct": is_correct,
                         "note": note
@@ -233,8 +270,8 @@ def run_benchmark():
         generate_plots(df)
 
         print("\n--- Correctness Report ---")
-        report_cols = ["problem", "solver",
-                       "status", "correct", "time_sec", "note"]
+        report_cols = ["problem", "solver", "status", "correct",
+                       "wall_sec", "cpu_sec", "note"]
         print(df[report_cols].set_index(["problem", "solver"]).to_string())
     else:
         print("No results to save")
