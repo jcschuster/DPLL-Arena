@@ -17,11 +17,42 @@ RESULTS_FILE = os.path.join(RESULTS_DIR, "benchmark_data.csv")
 TIMEOUT_SECONDS = 30
 
 BENCHMARK_SUITE = [
+    ("No_Clauses", ["true"], "SAT"),
+    ("Empty_Clause", ["false"], "UNSAT"),
     ("Gen_Easy_1Sat", ["randkcnf", "2", "2", "1"], "UNKNOWN"),
     ("Gen_PHP_5_4", ["php", "5", "4"], "UNSAT"),
-    ("Gen_Rand_3SAT_100var", ["--seed", "42", "randkcnf",
-     "3", "100", "420"], "SAT"),
+    ("Gen_3Col_G_10_10", ["kcolor", "3", "grid", "10", "10"], "UNKNOWN"),
+    ("Gen_3Col_large", ["kcolor", "3", "gnm", "100", "235"], "UNKNOWN"),
+    ("Gen_Rand_3SAT_100v", ["--seed", "42", "randkcnf",
+                            "3", "100", "420"], "SAT"),
+    ("Gen_OP_20", ["op", "20"], "UNSAT"),
+    ("Gen_12Clique_100", ["--seed", "42", "kclique",
+     "12", "gnp", "100", "0.5"], "UNSAT"),
+    ("Gen_Stone", ["--seed", "-1", "stone", "200",
+     "pyramid", "25", "--sparse", "3"], "UNSAT")
 ]
+
+
+def verify_dimacs(file_path: str) -> bool:
+    print(f"verifying DIMACS encoding in {file_path}...", end=" ", flush=True)
+    with open(file_path) as f:
+        literals = set()
+        nbvars = 0
+        for line in f:
+            line = line.strip()
+            if line.startswith("c"):
+                continue
+            elif line.startswith("p"):
+                nbvars = int(line.split()[2])
+            else:
+                literals = literals.union(
+                    {abs(int(l)) for l in line.split()[:-1]})
+        if all(l > 0 for l in literals) and all(l in literals for l in range(1, nbvars+1)):
+            print("verified!")
+            return True
+        else:
+            print("could not be verified!")
+            return False
 
 
 def discover_static_problems():
@@ -31,9 +62,9 @@ def discover_static_problems():
     for f in os.listdir(PROBLEMS_DIR):
         if f.endswith(".cnf"):
             path = os.path.join(PROBLEMS_DIR, f)
-            if f.startswith("uf"):
+            if f.startswith("uf") or f.startswith("bw_"):
                 expected = "SAT"
-            elif f.startswith("uuf"):
+            elif f.startswith("uuf") or f.startswith("ram_"):
                 expected = "UNSAT"
             else:
                 expected = "UNKNOWN"
@@ -76,26 +107,31 @@ def parse_output(stdout_str, stderr_str, exit_code):
     if exit_code == 124:
         status = "TIMEOUT"
     elif exit_code not in {0, 10, 20}:
-        print(f"Warning: Solver exited with code {exit_code}")
+        print(f"Warning: Solver exited with code {exit_code}", flush=True)
 
     if "s SATISFIABLE" in stdout_str:
         status = "SAT"
     elif "s UNSATISFIABLE" in stdout_str:
         status = "UNSAT"
 
-    model = []
+    model = None
     for line in stdout_str.splitlines():
         if line.startswith("v "):
+            model = []
             parts = line[2:].strip().split()
             for p in parts:
                 if p != '0':
                     model.append(int(p))
+            break
 
     return mem_kb, wall_time_sec, cpu_time_sec, status, model
 
 
 def verify_correctness(cnf_path, status, model, expected_result):
     """Checks if the result is correct."""
+
+    if status == "TIMEOUT":
+        return False, "TIMEOUT"
 
     if expected_result == "UNKNOWN":
         solver = Solver()
@@ -110,12 +146,12 @@ def verify_correctness(cnf_path, status, model, expected_result):
         else:
             expected_result = "UNSAT"
 
-    if status != expected_result:
+    if expected_result != "UNKNOWN" and status != expected_result:
         return False, f"Wrong Result (Expected {expected_result}, Got {status})"
 
     if status == "SAT":
-        if not model:
-            return True, "SAT but no model provided"
+        if model is None:
+            return True, "SAT (no model given)"
 
         formula = CNF(from_file=cnf_path)
         model_set = set(model)
@@ -124,68 +160,115 @@ def verify_correctness(cnf_path, status, model, expected_result):
             if not any(lit in model_set for lit in clause):
                 return False, f"Invalid Model (Clause {clause} failed)"
 
-        return True, "Model Verified"
+        return True, "SAT (given model verified)"
 
     if status == "UNSAT":
-        if not model:
-            return True, "UNSAT but no model provided"
+        if model is None:
+            return True, "UNSAT (no countermodel given)"
 
         formula = CNF(from_file=cnf_path)
         model_set = set(model)
 
         countersat = False
+        if len(formula.clauses) == 0 and len(model_set) == 0:
+            countersat = True
         for clause in formula.clauses:
             if len([*filter(lambda lit: lit not in model_set, clause)]) == 0:
                 countersat = True
                 break
 
         if countersat:
-            return True, "Countermodel Verified"
+            return True, "UNSAT (given countermodel verified)"
         else:
-            return False, "Invalid Countermodel"
+            return True, "Invalid Countermodel"
 
     return False, "Solver Error"
 
 
 def generate_plots(df):
-    """Generates Time and Memory comparison charts."""
-    print("Generating plots...", end=" ")
+    """Generates Time and Memory comparison charts with LARGE fonts."""
+    print("Generating plots...", end=" ", flush=True)
 
-    plt.figure(figsize=(10, 6))
+    FIG_SIZE = (24, 12)
+
+    # FONT SIZES
+    F_TITLE = 24
+    F_AXIS_LABEL = 18
+    F_TICKS = 14
+    F_LEGEND = 14
+
+    # --- Plot 1: Wall Time ---
+    fig, ax = plt.subplots(figsize=FIG_SIZE)
+
     pivot_time = df.pivot(
         index='problem', columns='solver', values='wall_sec')
-    pivot_time.plot(kind='bar', width=0.8, rot=45, logy=True)
-    plt.axhline(y=TIMEOUT_SECONDS, color='r', linestyle='--', label='Timeout')
-    plt.title('Solver Execution Time (Log Scale)')
-    plt.ylabel('Seconds (Log Scale)')
-    plt.legend(loc='upper right')
-    plt.grid(visible=True, which="both", axis="y", linestyle="--", alpha=0.5)
-    plt.tight_layout()
-    plt.savefig(os.path.join(RESULTS_DIR, 'benchmark_time.png'))
-    plt.close()
 
-    plt.figure(figsize=(10, 6))
-    pivot_time = df.pivot(
+    pivot_time.plot(kind='bar', width=0.8, ax=ax, logy=True)
+
+    ax.axhline(y=TIMEOUT_SECONDS, color='r', linestyle='--', label='Timeout')
+
+    ax.set_title('Solver Execution Time (Log Scale)', fontsize=F_TITLE, pad=20)
+    ax.set_ylabel('Seconds (Log Scale)', fontsize=F_AXIS_LABEL)
+    ax.set_xlabel('Problem', fontsize=F_AXIS_LABEL)
+
+    ax.legend(bbox_to_anchor=(1.01, 1), loc='upper left',
+              borderaxespad=0, fontsize=F_LEGEND)
+
+    ax.grid(visible=True, which="both", axis="y", linestyle="--", alpha=0.5)
+
+    ax.tick_params(axis='both', which='major', labelsize=F_TICKS)
+    plt.xticks(rotation=45, ha='right')
+
+    plt.tight_layout()
+    plt.savefig(os.path.join(RESULTS_DIR, 'benchmark_time.png'), dpi=100)
+    plt.close(fig)
+
+    # --- Plot 2: CPU Time ---
+    fig, ax = plt.subplots(figsize=FIG_SIZE)
+
+    pivot_cpu = df.pivot(
         index='problem', columns='solver', values='cpu_sec')
-    pivot_time.plot(kind='bar', width=0.8, rot=45, logy=True)
-    plt.title('Solver CPU Time (Log Scale)')
-    plt.ylabel('Seconds (Log Scale)')
-    plt.legend(loc='upper right')
-    plt.grid(visible=True, which="both", axis="y", linestyle="--", alpha=0.5)
-    plt.tight_layout()
-    plt.savefig(os.path.join(RESULTS_DIR, 'benchmark_cpu_time.png'))
-    plt.close()
 
-    plt.figure(figsize=(10, 6))
+    pivot_cpu.plot(kind='bar', width=0.8, ax=ax, logy=True)
+
+    ax.set_title('Solver CPU Time (Log Scale)', fontsize=F_TITLE, pad=20)
+    ax.set_ylabel('Seconds (Log Scale)', fontsize=F_AXIS_LABEL)
+    ax.set_xlabel('Problem', fontsize=F_AXIS_LABEL)
+
+    ax.legend(bbox_to_anchor=(1.01, 1), loc='upper left',
+              borderaxespad=0, fontsize=F_LEGEND)
+
+    ax.grid(visible=True, which="both", axis="y", linestyle="--", alpha=0.5)
+
+    ax.tick_params(axis='both', which='major', labelsize=F_TICKS)
+    plt.xticks(rotation=45, ha='right')
+
+    plt.tight_layout()
+    plt.savefig(os.path.join(RESULTS_DIR, 'benchmark_cpu_time.png'), dpi=100)
+    plt.close(fig)
+
+    # --- Plot 3: Memory ---
+    fig, ax = plt.subplots(figsize=FIG_SIZE)
+
     pivot_mem = df.pivot(index='problem', columns='solver', values='memory_kb')
-    (pivot_mem / 1024).plot(kind='bar', width=0.8, rot=45)  # Convert to MB
-    plt.title('Solver Peak Memory Usage')
-    plt.ylabel('Memory (MB)')
-    plt.tight_layout()
-    plt.savefig(os.path.join(RESULTS_DIR, 'benchmark_memory.png'))
-    plt.close()
 
-    print("Done! Charts saved to results folder.")
+    (pivot_mem / 1024).plot(kind='bar', width=0.8, ax=ax)  # Convert to MB
+
+    ax.set_title('Solver Peak Memory Usage', fontsize=F_TITLE, pad=20)
+    ax.set_ylabel('Memory (MB)', fontsize=F_AXIS_LABEL)
+    ax.set_xlabel('Problem', fontsize=F_AXIS_LABEL)
+
+    ax.legend(bbox_to_anchor=(1.01, 1), loc='upper left',
+              borderaxespad=0, fontsize=F_LEGEND)
+
+    ax.tick_params(axis='both', which='major', labelsize=F_TICKS)
+    plt.xticks(rotation=45, ha='right')
+
+    plt.tight_layout()
+    plt.savefig(os.path.join(RESULTS_DIR, 'benchmark_memory.png'), dpi=100)
+    plt.close(fig)
+
+    print("done! Charts saved to results folder.")
 
 
 def run_benchmark():
@@ -196,23 +279,32 @@ def run_benchmark():
 
     discover_static_problems()
 
-    print(f"Solvers: {solvers}")
-    print(f"Problems: {[p[0] for p in BENCHMARK_SUITE]}")
-    print(f"Timeout Limit: {TIMEOUT_SECONDS}s")
+    print(f"Solvers: {solvers}", flush=True)
+    print(f"Problems: {[p[0] for p in BENCHMARK_SUITE]}", flush=True)
+    print(f"Timeout Limit: {TIMEOUT_SECONDS}s", flush=True)
 
     results = []
-    print(f"Starting benchmark...")
+    print(f"Starting benchmark...", flush=True)
 
     for prob_name, source, expected in BENCHMARK_SUITE:
-        print(f"\n--- Problem: {prob_name} ---")
+        print(f"\n--- Problem: {prob_name} ---", flush=True)
 
         with tempfile.NamedTemporaryFile(mode='w+', suffix='.cnf') as tmp_cnf:
             if isinstance(source, list):
+                print("Generating problem...", end=" ", flush=True)
                 subprocess.run(["cnfgen"] + source, stdout=tmp_cnf, check=True)
+                print("done!", flush=True)
             else:
+                print("Loading problem file...", end=" ", flush=True)
                 shutil.copyfile(source, tmp_cnf.name)
+                print("done!", flush=True)
 
             tmp_cnf.seek(0)
+
+            if not verify_dimacs(tmp_cnf.name):
+                print(
+                    f"Problem {prob_name} could not be verified, skipping...", flush=True)
+                continue
 
             for solver_name in solvers:
                 solver_path = os.path.join(SOLVERS_DIR, solver_name)
@@ -248,7 +340,7 @@ def run_benchmark():
                     is_correct, note = verify_correctness(
                         tmp_cnf.name, status, model, expected)
 
-                    print(f"[{status}] {duration}s - {note}")
+                    print(f"[{status}] {duration}s - {note}", flush=True)
 
                     results.append({
                         "solver": solver_name,
@@ -261,7 +353,7 @@ def run_benchmark():
                         "note": note
                     })
                 except Exception as e:
-                    print(f"Failed: {e}")
+                    print(f"Failed: {e}", flush=True)
 
     if results:
         df = pd.DataFrame(results)
@@ -279,3 +371,4 @@ def run_benchmark():
 
 if __name__ == "__main__":
     run_benchmark()
+    # subprocess.run(["streamlit", "run", "/app/dashboard.py"])

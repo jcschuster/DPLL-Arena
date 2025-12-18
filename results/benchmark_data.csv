@@ -1,7 +1,161 @@
-solver,problem,status,time_sec,memory_kb,correct,note
-dummyA.py,Gen_PHP_5_4,UNSAT,0.04,16824,True,UNSAT
-dummyA.py,Gen_Rand_3SAT_100var,UNSAT,0.14,83800,False,"Wrong Result (Expected SAT, Got UNSAT)"
-dummyA.py,uf50-011.cnf,SAT,0.07,37592,False,"Invalid Model (Clause [14, 31, -18] failed)"
-dummyA.py,uf50-0166.cnf,UNSAT,0.04,23440,False,"Wrong Result (Expected SAT, Got UNSAT)"
-dummyA.py,uuf50-010.cnf,UNSAT,0.08,46076,True,UNSAT
-dummyA.py,uf100-04.cnf,UNSAT,0.04,23784,False,"Wrong Result (Expected SAT, Got UNSAT)"
+solver,problem,status,wall_sec,cpu_sec,memory_kb,correct,note
+cadical.py,No_Clauses,SAT,0.07,0.03,18312,True,SAT (given model verified)
+lingeling.py,No_Clauses,SAT,0.07,0.03,18292,True,SAT (given model verified)
+m22.py,No_Clauses,SAT,0.07,0.04,18024,True,SAT (given model verified)
+sat_tableaux,No_Clauses,SAT,0.85,1.33,94292,True,SAT (no model given)
+t1_david_mutas_dpll.py,No_Clauses,SAT,0.03,0.01,10240,True,SAT (given model verified)
+t2_dpll_elixir,No_Clauses,ERROR,0.78,1.24,94924,False,"Wrong Result (Expected SAT, Got ERROR)"
+t2_rust_nonative,No_Clauses,ERROR,0.06,0.0,2048,False,"Wrong Result (Expected SAT, Got ERROR)"
+t3_dpll-solver-fl,No_Clauses,ERROR,0.04,0.01,4736,False,"Wrong Result (Expected SAT, Got ERROR)"
+cadical.py,Empty_Clause,ERROR,0.1,0.05,20972,False,"Wrong Result (Expected UNSAT, Got ERROR)"
+lingeling.py,Empty_Clause,UNSAT,0.07,0.03,18420,True,UNSAT (no countermodel given)
+m22.py,Empty_Clause,UNSAT,0.07,0.04,18124,True,UNSAT (no countermodel given)
+sat_tableaux,Empty_Clause,UNSAT,0.76,1.28,95564,True,UNSAT (no countermodel given)
+t1_david_mutas_dpll.py,Empty_Clause,SAT,0.03,0.02,10240,False,"Wrong Result (Expected UNSAT, Got SAT)"
+t2_dpll_elixir,Empty_Clause,UNSAT,0.65,1.19,95228,True,UNSAT (no countermodel given)
+t2_rust_nonative,Empty_Clause,ERROR,0.03,0.0,1920,False,"Wrong Result (Expected UNSAT, Got ERROR)"
+t3_dpll-solver-fl,Empty_Clause,ERROR,0.03,0.0,4864,False,"Wrong Result (Expected UNSAT, Got ERROR)"
+cadical.py,Gen_Easy_1Sat,SAT,0.07,0.04,18412,True,SAT (given model verified)
+lingeling.py,Gen_Easy_1Sat,SAT,0.07,0.03,18928,True,SAT (given model verified)
+m22.py,Gen_Easy_1Sat,SAT,0.07,0.04,17792,True,SAT (given model verified)
+sat_tableaux,Gen_Easy_1Sat,SAT,0.8,1.39,91292,True,SAT (given model verified)
+t1_david_mutas_dpll.py,Gen_Easy_1Sat,SAT,0.03,0.02,10240,True,SAT (given model verified)
+t2_dpll_elixir,Gen_Easy_1Sat,SAT,0.66,1.17,90072,True,SAT (given model verified)
+t2_rust_nonative,Gen_Easy_1Sat,SAT,0.0,0.0,1920,True,SAT (given model verified)
+t3_dpll-solver-fl,Gen_Easy_1Sat,SAT,0.03,0.0,4608,True,SAT (given model verified)
+cadical.py,Gen_PHP_5_4,UNSAT,0.07,0.05,18668,True,UNSAT (no countermodel given)
+lingeling.py,Gen_PHP_5_4,UNSAT,0.07,0.03,18156,True,UNSAT (no countermodel given)
+m22.py,Gen_PHP_5_4,UNSAT,0.08,0.05,18024,True,UNSAT (no countermodel given)
+sat_tableaux,Gen_PHP_5_4,TIMEOUT,31.03,31.6,95292,False,TIMEOUT
+t1_david_mutas_dpll.py,Gen_PHP_5_4,UNSAT,0.03,0.0,10240,True,UNSAT (no countermodel given)
+t2_dpll_elixir,Gen_PHP_5_4,UNSAT,0.58,1.06,92272,True,UNSAT (no countermodel given)
+t2_rust_nonative,Gen_PHP_5_4,UNSAT,0.0,0.0,1792,True,UNSAT (no countermodel given)
+t3_dpll-solver-fl,Gen_PHP_5_4,UNSAT,0.03,0.0,5504,True,UNSAT (given countermodel verified)
+cadical.py,Gen_3Col_G_10_10,SAT,0.07,0.04,18668,True,SAT (given model verified)
+lingeling.py,Gen_3Col_G_10_10,SAT,0.07,0.03,18672,True,SAT (given model verified)
+m22.py,Gen_3Col_G_10_10,SAT,0.07,0.05,18408,True,SAT (given model verified)
+sat_tableaux,Gen_3Col_G_10_10,TIMEOUT,31.03,31.37,127264,False,TIMEOUT
+t1_david_mutas_dpll.py,Gen_3Col_G_10_10,SAT,0.06,0.04,12416,True,SAT (given model verified)
+t2_dpll_elixir,Gen_3Col_G_10_10,SAT,0.64,1.21,98756,True,SAT (given model verified)
+t2_rust_nonative,Gen_3Col_G_10_10,SAT,0.01,0.0,1792,True,SAT (given model verified)
+t3_dpll-solver-fl,Gen_3Col_G_10_10,SAT,0.04,0.01,10112,True,SAT (given model verified)
+cadical.py,Gen_3Col_large,UNSAT,0.07,0.04,18792,True,UNSAT (no countermodel given)
+lingeling.py,Gen_3Col_large,UNSAT,0.08,0.04,18536,True,UNSAT (no countermodel given)
+m22.py,Gen_3Col_large,UNSAT,0.1,0.06,18156,True,UNSAT (no countermodel given)
+sat_tableaux,Gen_3Col_large,TIMEOUT,31.03,31.57,133680,False,TIMEOUT
+t1_david_mutas_dpll.py,Gen_3Col_large,TIMEOUT,30.0,29.46,13300,False,TIMEOUT
+t2_dpll_elixir,Gen_3Col_large,UNSAT,0.7,1.23,109144,True,UNSAT (no countermodel given)
+t2_rust_nonative,Gen_3Col_large,UNSAT,0.01,0.01,1536,True,UNSAT (no countermodel given)
+t3_dpll-solver-fl,Gen_3Col_large,UNSAT,0.6,0.59,10432,True,UNSAT (given countermodel verified)
+cadical.py,Gen_Rand_3SAT_100v,SAT,0.08,0.04,18672,True,SAT (given model verified)
+lingeling.py,Gen_Rand_3SAT_100v,SAT,0.08,0.03,18796,True,SAT (given model verified)
+m22.py,Gen_Rand_3SAT_100v,SAT,0.08,0.04,17900,True,SAT (given model verified)
+sat_tableaux,Gen_Rand_3SAT_100v,TIMEOUT,31.04,31.53,118680,False,TIMEOUT
+t1_david_mutas_dpll.py,Gen_Rand_3SAT_100v,SAT,0.05,0.03,11136,True,SAT (given model verified)
+t2_dpll_elixir,Gen_Rand_3SAT_100v,SAT,0.83,1.47,111184,True,SAT (given model verified)
+t2_rust_nonative,Gen_Rand_3SAT_100v,SAT,0.01,0.0,2048,True,SAT (given model verified)
+t3_dpll-solver-fl,Gen_Rand_3SAT_100v,SAT,0.28,0.24,10368,True,SAT (given model verified)
+cadical.py,Gen_OP_20,UNSAT,0.08,0.06,20976,True,UNSAT (no countermodel given)
+lingeling.py,Gen_OP_20,UNSAT,0.1,0.05,20240,True,UNSAT (no countermodel given)
+m22.py,Gen_OP_20,UNSAT,2.53,2.47,30224,True,UNSAT (no countermodel given)
+sat_tableaux,Gen_OP_20,TIMEOUT,31.05,31.7,186352,False,TIMEOUT
+t1_david_mutas_dpll.py,Gen_OP_20,TIMEOUT,30.0,29.92,36988,False,TIMEOUT
+t2_dpll_elixir,Gen_OP_20,TIMEOUT,31.25,386.24,328392,False,TIMEOUT
+t2_rust_nonative,Gen_OP_20,TIMEOUT,30.0,475.89,1920,False,TIMEOUT
+t3_dpll-solver-fl,Gen_OP_20,TIMEOUT,30.0,46.2,42772,False,TIMEOUT
+cadical.py,Gen_12Clique_100,UNSAT,2.22,1.9,240572,True,UNSAT (no countermodel given)
+lingeling.py,Gen_12Clique_100,UNSAT,7.26,6.99,165136,True,UNSAT (no countermodel given)
+m22.py,Gen_12Clique_100,UNSAT,14.26,13.82,218388,True,UNSAT (no countermodel given)
+sat_tableaux,Gen_12Clique_100,TIMEOUT,31.1,38.55,523724,False,TIMEOUT
+t1_david_mutas_dpll.py,Gen_12Clique_100,TIMEOUT,30.06,29.62,325116,False,TIMEOUT
+t2_dpll_elixir,Gen_12Clique_100,TIMEOUT,31.19,118.04,2354540,False,TIMEOUT
+t2_rust_nonative,Gen_12Clique_100,UNSAT,0.14,0.05,55656,True,UNSAT (no countermodel given)
+t3_dpll-solver-fl,Gen_12Clique_100,TIMEOUT,30.16,32.05,663720,False,TIMEOUT
+cadical.py,Gen_Stone,UNSAT,0.85,0.79,27180,True,UNSAT (no countermodel given)
+lingeling.py,Gen_Stone,UNSAT,1.42,1.37,26020,True,UNSAT (no countermodel given)
+m22.py,Gen_Stone,UNSAT,4.39,4.3,36728,True,UNSAT (no countermodel given)
+sat_tableaux,Gen_Stone,TIMEOUT,31.05,30.52,204432,False,TIMEOUT
+t1_david_mutas_dpll.py,Gen_Stone,TIMEOUT,30.03,27.76,151408,False,TIMEOUT
+t2_dpll_elixir,Gen_Stone,TIMEOUT,31.51,389.62,353484,False,TIMEOUT
+t2_rust_nonative,Gen_Stone,TIMEOUT,30.0,475.41,2944,False,TIMEOUT
+t3_dpll-solver-fl,Gen_Stone,TIMEOUT,30.03,58.4,159712,False,TIMEOUT
+cadical.py,bw_anomaly.cnf,SAT,0.08,0.05,18204,True,SAT (given model verified)
+lingeling.py,bw_anomaly.cnf,SAT,0.08,0.04,18284,True,SAT (given model verified)
+m22.py,bw_anomaly.cnf,SAT,0.08,0.04,17492,True,SAT (given model verified)
+sat_tableaux,bw_anomaly.cnf,TIMEOUT,31.03,31.6,103540,False,TIMEOUT
+t1_david_mutas_dpll.py,bw_anomaly.cnf,SAT,0.04,0.01,10240,True,SAT (given model verified)
+t2_dpll_elixir,bw_anomaly.cnf,SAT,0.76,1.37,92724,True,SAT (given model verified)
+t2_rust_nonative,bw_anomaly.cnf,SAT,0.0,0.0,1920,True,SAT (given model verified)
+t3_dpll-solver-fl,bw_anomaly.cnf,SAT,0.04,0.0,6528,True,SAT (given model verified)
+cadical.py,bw_huge.cnf,SAT,0.1,0.06,20812,True,SAT (given model verified)
+lingeling.py,bw_huge.cnf,SAT,0.1,0.06,20024,True,SAT (given model verified)
+m22.py,bw_huge.cnf,SAT,0.09,0.05,19432,True,SAT (given model verified)
+sat_tableaux,bw_huge.cnf,TIMEOUT,31.05,32.36,182320,False,TIMEOUT
+t1_david_mutas_dpll.py,bw_huge.cnf,SAT,10.31,10.17,22848,True,SAT (given model verified)
+t2_dpll_elixir,bw_huge.cnf,SAT,0.88,1.92,171340,True,SAT (given model verified)
+t2_rust_nonative,bw_huge.cnf,SAT,0.01,0.0,1792,True,SAT (given model verified)
+t3_dpll-solver-fl,bw_huge.cnf,SAT,0.38,0.32,21360,True,SAT (given model verified)
+cadical.py,bw_medium.cnf,SAT,0.08,0.04,18928,True,SAT (given model verified)
+lingeling.py,bw_medium.cnf,SAT,0.08,0.04,18544,True,SAT (given model verified)
+m22.py,bw_medium.cnf,SAT,0.08,0.03,18280,True,SAT (given model verified)
+sat_tableaux,bw_medium.cnf,TIMEOUT,31.03,31.46,125096,False,TIMEOUT
+t1_david_mutas_dpll.py,bw_medium.cnf,SAT,0.06,0.03,11136,True,SAT (given model verified)
+t2_dpll_elixir,bw_medium.cnf,SAT,0.84,1.38,103476,True,SAT (given model verified)
+t2_rust_nonative,bw_medium.cnf,SAT,0.01,0.0,1792,True,SAT (given model verified)
+t3_dpll-solver-fl,bw_medium.cnf,SAT,0.05,0.01,8960,True,SAT (given model verified)
+cadical.py,ram_5_5_49.cnf,TIMEOUT,30.26,25.38,1604668,False,TIMEOUT
+lingeling.py,ram_5_5_49.cnf,TIMEOUT,30.2,26.31,1385772,False,TIMEOUT
+m22.py,ram_5_5_49.cnf,TIMEOUT,30.21,28.11,1385580,False,TIMEOUT
+sat_tableaux,ram_5_5_49.cnf,TIMEOUT,31.4,36.71,2248680,False,TIMEOUT
+t1_david_mutas_dpll.py,ram_5_5_49.cnf,TIMEOUT,30.49,26.27,2728044,False,TIMEOUT
+t2_dpll_elixir,ram_5_5_49.cnf,TIMEOUT,31.6,36.43,1591852,False,TIMEOUT
+t2_rust_nonative,ram_5_5_49.cnf,TIMEOUT,30.16,452.84,585584,False,TIMEOUT
+t3_dpll-solver-fl,ram_5_5_49.cnf,TIMEOUT,31.03,29.47,5829404,False,TIMEOUT
+cadical.py,uf100-04.cnf,SAT,0.09,0.04,18664,True,SAT (given model verified)
+lingeling.py,uf100-04.cnf,SAT,0.08,0.03,18796,True,SAT (given model verified)
+m22.py,uf100-04.cnf,SAT,0.08,0.05,18156,True,SAT (given model verified)
+sat_tableaux,uf100-04.cnf,TIMEOUT,31.04,31.44,111888,False,TIMEOUT
+t1_david_mutas_dpll.py,uf100-04.cnf,SAT,11.79,11.69,11524,True,SAT (given model verified)
+t2_dpll_elixir,uf100-04.cnf,SAT,0.73,1.35,106140,True,SAT (given model verified)
+t2_rust_nonative,uf100-04.cnf,SAT,0.01,0.0,1792,True,SAT (given model verified)
+t3_dpll-solver-fl,uf100-04.cnf,SAT,0.09,0.04,9984,True,SAT (given model verified)
+cadical.py,uf225-097.cnf,ERROR,0.11,0.06,21488,False,"Wrong Result (Expected SAT, Got ERROR)"
+lingeling.py,uf225-097.cnf,UNSAT,0.08,0.04,18928,False,"Wrong Result (Expected SAT, Got UNSAT)"
+m22.py,uf225-097.cnf,UNSAT,0.08,0.04,18028,False,"Wrong Result (Expected SAT, Got UNSAT)"
+sat_tableaux,uf225-097.cnf,TIMEOUT,31.03,31.31,132200,False,TIMEOUT
+t1_david_mutas_dpll.py,uf225-097.cnf,ERROR,0.08,0.03,13312,False,"Wrong Result (Expected SAT, Got ERROR)"
+t2_dpll_elixir,uf225-097.cnf,SAT,3.19,33.79,200352,False,Invalid Model (Clause [] failed)
+t2_rust_nonative,uf225-097.cnf,SAT,0.05,0.59,1792,False,Invalid Model (Clause [] failed)
+t3_dpll-solver-fl,uf225-097.cnf,SAT,26.91,32.26,11552,False,Invalid Model (Clause [] failed)
+cadical.py,uf50-011.cnf,SAT,0.08,0.04,18908,True,SAT (given model verified)
+lingeling.py,uf50-011.cnf,SAT,0.08,0.05,18408,True,SAT (given model verified)
+m22.py,uf50-011.cnf,SAT,0.07,0.02,17856,True,SAT (given model verified)
+sat_tableaux,uf50-011.cnf,TIMEOUT,31.03,31.51,106356,False,TIMEOUT
+t1_david_mutas_dpll.py,uf50-011.cnf,SAT,0.04,0.02,10496,True,SAT (given model verified)
+t2_dpll_elixir,uf50-011.cnf,SAT,0.75,1.29,95664,True,SAT (given model verified)
+t2_rust_nonative,uf50-011.cnf,SAT,0.0,0.0,1920,True,SAT (given model verified)
+t3_dpll-solver-fl,uf50-011.cnf,SAT,0.03,0.0,6272,True,SAT (given model verified)
+cadical.py,uf50-0166.cnf,SAT,0.07,0.03,18544,True,SAT (given model verified)
+lingeling.py,uf50-0166.cnf,SAT,0.08,0.04,18796,True,SAT (given model verified)
+m22.py,uf50-0166.cnf,SAT,0.08,0.04,18052,True,SAT (given model verified)
+sat_tableaux,uf50-0166.cnf,TIMEOUT,31.03,31.56,100584,False,TIMEOUT
+t1_david_mutas_dpll.py,uf50-0166.cnf,SAT,0.04,0.02,10624,True,SAT (given model verified)
+t2_dpll_elixir,uf50-0166.cnf,SAT,0.73,1.26,95992,True,SAT (given model verified)
+t2_rust_nonative,uf50-0166.cnf,SAT,0.01,0.0,1792,True,SAT (given model verified)
+t3_dpll-solver-fl,uf50-0166.cnf,SAT,0.04,0.0,6784,True,SAT (given model verified)
+cadical.py,uuf250-025.cnf,ERROR,0.12,0.07,21744,False,"Wrong Result (Expected UNSAT, Got ERROR)"
+lingeling.py,uuf250-025.cnf,UNSAT,0.08,0.04,18544,True,UNSAT (no countermodel given)
+m22.py,uuf250-025.cnf,UNSAT,0.08,0.05,18156,True,UNSAT (no countermodel given)
+sat_tableaux,uuf250-025.cnf,TIMEOUT,31.03,31.71,126856,False,TIMEOUT
+t1_david_mutas_dpll.py,uuf250-025.cnf,ERROR,0.09,0.05,13312,False,"Wrong Result (Expected UNSAT, Got ERROR)"
+t2_dpll_elixir,uuf250-025.cnf,TIMEOUT,31.09,352.43,226172,False,TIMEOUT
+t2_rust_nonative,uuf250-025.cnf,UNSAT,1.34,14.1,1664,True,UNSAT (no countermodel given)
+t3_dpll-solver-fl,uuf250-025.cnf,TIMEOUT,30.0,36.99,12616,False,TIMEOUT
+cadical.py,uuf50-010.cnf,UNSAT,0.08,0.04,18720,True,UNSAT (no countermodel given)
+lingeling.py,uuf50-010.cnf,UNSAT,0.09,0.05,18096,True,UNSAT (no countermodel given)
+m22.py,uuf50-010.cnf,UNSAT,0.08,0.04,17936,True,UNSAT (no countermodel given)
+sat_tableaux,uuf50-010.cnf,TIMEOUT,31.03,31.4,101772,False,TIMEOUT
+t1_david_mutas_dpll.py,uuf50-010.cnf,UNSAT,0.09,0.06,10496,True,UNSAT (no countermodel given)
+t2_dpll_elixir,uuf50-010.cnf,UNSAT,0.68,1.15,91256,True,UNSAT (no countermodel given)
+t2_rust_nonative,uuf50-010.cnf,UNSAT,0.0,0.0,1792,True,UNSAT (no countermodel given)
+t3_dpll-solver-fl,uuf50-010.cnf,UNSAT,0.04,0.0,7552,True,UNSAT (given countermodel verified)

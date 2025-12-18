@@ -17,7 +17,7 @@ ENV LC_ALL=en_US.UTF-8
 
 COPY --from=elixir_source /usr/local /usr/local
 
-RUN pip3 install --no-cache-dir cnfgen pandas matplotlib python-sat
+RUN pip3 install --no-cache-dir cnfgen pandas matplotlib python-sat streamlit plotly
 
 WORKDIR /app
 
@@ -25,6 +25,9 @@ ENV HOME=/root
 
 COPY runner.py /app/runner.py
 RUN chmod +x /app/runner.py
+
+COPY dashboard.py /app/dashboard.py
+RUN chmod +x /app/dashboard.py
 
 RUN mkdir -p /app/solvers /app/results /app/problems
 

@@ -17,7 +17,7 @@ The system expects one of two outputs:
 
 `docker build -t sat-bench .`
 
-## Run the container
+## Run the benchmark
 
 On Windows:
 
@@ -26,3 +26,13 @@ On Windows:
 On Unix systems (Linux, MacOS):
 
 `docker run --rm -v "$(pwd)/solvers:/app/solvers" -v "$(pwd)/results:/app/results" -v "$(pwd)/problems:/app/problems" sat-bench`
+
+## Run the web-app containing stats
+
+On Windows:
+
+`docker run --rm -p 8501:8501 -v "${pwd}/results:/app/results" --entrypoint streamlit sat-bench run /app/dashboard.py --server.address=0.0.0.0`
+
+On Unix systems (Linux, MacOS):
+
+`docker run --rm -p 8501:8501 -v "$(pwd)/results:/app/results" --entrypoint streamlit sat-bench run /app/dashboard.py --server.address=0.0.0.0`
