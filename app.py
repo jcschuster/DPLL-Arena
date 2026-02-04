@@ -3,6 +3,27 @@ import pandas as pd
 import os
 import plotly.express as px
 import engine
+import subprocess
+
+BENCHMARK_SUITE = [
+    # ("No_Clauses", ["true"], "SAT"),
+    # ("Empty_Clause", ["false"], "UNSAT"),
+    ("Gen_Easy_1Sat", ["randkcnf", "2", "2", "1"], "UNKNOWN"),
+    ("Gen_Medium_3Sat", ["randkcnf", "3", "250", "1065"], "UNKNOWN"),
+    ("Gen_PHP_5_4", ["php", "5", "4"], "UNSAT"),
+    ("Gen_PHP_XOR", ["php", "6", "5", "-T", "xor", "2"], "UNSAT"),
+    ("Gen_3Col_G_10_10", ["kcolor", "3", "grid", "10", "10"], "UNKNOWN"),
+    ("Gen_3Col_large", ["kcolor", "3", "gnm", "100", "235"], "UNKNOWN"),
+    ("Gen_Rand_3SAT_100v", ["--seed", "42", "randkcnf",
+                            "3", "100", "420"], "SAT"),
+    ("Gen_OP_20", ["op", "20"], "UNSAT"),
+    ("Gen_12Clique_100", ["--seed", "42", "kclique",
+     "12", "gnp", "100", "0.5"], "UNSAT"),
+    ("Gen_10Clique_150", ["kclique", "10", "gnp", "150", "0.5"], "UNKNOWN"),
+    ("Gen_Stone", ["--seed", "-1", "stone", "200",
+     "pyramid", "25", "--sparse", "3"], "UNSAT"),
+    ("Gen_Tseitin", ["tseitin", "random", "grid", "12", "12"], "UNKNOWN")
+]
 
 # --- CONFIG ---
 RESULTS_DIR = "/app/results"
@@ -13,6 +34,26 @@ PROBLEMS_DIR = "/app/problems"
 os.makedirs(RESULTS_DIR, exist_ok=True)
 os.makedirs(SOLVERS_DIR, exist_ok=True)
 os.makedirs(PROBLEMS_DIR, exist_ok=True)
+
+# Generate benchmark problems on startup
+
+
+def generate_benchmark_problems():
+    """Generates CNF files from BENCHMARK_SUITE using cnfgen."""
+    for problem_name, cnfgen_args, _ in BENCHMARK_SUITE:
+        output_file = os.path.join(PROBLEMS_DIR, f"{problem_name}.cnf")
+        if os.path.exists(output_file):
+            continue
+        cmd = ["cnfgen"] + cnfgen_args
+        try:
+            with open(output_file, 'w') as f:
+                subprocess.run(
+                    cmd, stdout=f, stderr=subprocess.PIPE, timeout=60)
+        except Exception as e:
+            print(f"Failed to generate {problem_name}: {e}")
+
+
+generate_benchmark_problems()
 
 st.set_page_config(page_title="SAT Arena", layout="wide")
 st.title("AISE-LKR-B: SAT-Arena - Interactive Benchmark")
@@ -123,8 +164,7 @@ if os.path.exists(RESULTS_FILE):
     st.divider()
     st.header("Results Analysis")
 
-    tab1, tab2, tab3, tab4 = st.tabs(
-        ["Overview", "Time", "Memory", "Raw Data"])
+    tab1, tab2, tab3 = st.tabs(["Overview", "Time", "Memory"])
 
     with tab1:
         c1, c2, c3 = st.columns(3)
@@ -133,8 +173,7 @@ if os.path.exists(RESULTS_FILE):
         c3.metric("Avg Wall Time", f"{round(df['wall_ms'].mean())}ms")
 
         st.subheader("Correctness Status")
-        st.dataframe(df.style.apply(lambda x: [
-                     'background: #ffcdd2' if v is False else '' for v in x], subset=['correct']))
+        st.dataframe(df)
 
     with tab2:
         st.subheader("Execution Time")
@@ -147,6 +186,3 @@ if os.path.exists(RESULTS_FILE):
         fig = px.bar(df, x="problem", y="memory_kb",
                      color="solver", barmode="group")
         st.plotly_chart(fig, width='stretch')
-
-    with tab4:
-        st.dataframe(df)

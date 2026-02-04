@@ -135,24 +135,7 @@ def verify_correctness(cnf_path, status, model, expected_result):
         return True, "SAT (given model verified)"
 
     if status == "UNSAT":
-        if model is None:
-            return True, "UNSAT (no countermodel given)"
-
-        formula = CNF(from_file=cnf_path)
-        model_set = set(model)
-
-        countersat = False
-        if len(formula.clauses) == 0 and len(model_set) == 0:
-            countersat = True
-        for clause in formula.clauses:
-            if len([*filter(lambda lit: lit not in model_set, clause)]) == 0:
-                countersat = True
-                break
-
-        if countersat:
-            return True, "UNSAT (given countermodel verified)"
-        else:
-            return True, "Invalid Countermodel"
+        return True, "UNSAT"
 
     return False, "Solver Error"
 
