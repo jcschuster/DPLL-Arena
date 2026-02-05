@@ -13,18 +13,15 @@ The system expects one of two outputs:
 - `s SATISFIABLE` means that the prover can satisfy the problem. A variable assignment can be given with an additional line `v <VARIABLES>` where `<VARIABLES>` contains of positive and negative numbers representing the assignment (true or false) to the respective variable and may end in "0" (e.g., `v 1 -2 3 0`). Note that the correctness of the model will be checked by the system.
 - `s UNSATISFIABLE` means that the prover can't find a variable assignment that satisfies the problem.
 
-## Build the image
-
-`docker build -t sat-bench-web .`
-
-## Run the interactive benchmark
-
-On Windows:
-
-`docker run -p 8501:8501 -v "${PWD}/solvers:/app/solvers" -v "${PWD}/problems:/app/problems" -v "${PWD}/results:/app/results" sat-bench-web`
+## Build and run the benchmark
 
 On Unix systems (Linux, MacOS):
 
-`docker run -p 8501:8501 -v "$(pwd)/solvers:/app/solvers" -v "$(pwd)/problems:/app/problems" -v "$(pwd)/results:/app/results" sat-bench-web`
+    $ ./run_arena.sh
+
+On Windows:
+
+    $ docker build -t sat-bench-web .
+    $ docker run -p 8501:8501 -v "${PWD}/solvers:/app/solvers" -v "${PWD}/problems:/app/problems" -v "${PWD}/results:/app/results" sat-bench-web
 
 After the app started, the benchmark is available under [localhost:8501](http://localhost:8501/).
