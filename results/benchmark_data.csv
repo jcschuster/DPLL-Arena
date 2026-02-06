@@ -1,0 +1,298 @@
+solver,problem,status,wall_ms,cpu_ms,memory_kb,correct,note
+cadical.py,uf50-011.cnf,SAT,46.9,30.0,18788,True,SAT (given model verified)
+lingeling.py,uf50-011.cnf,SAT,58.9,40.0,18564,True,SAT (given model verified)
+m22.py,uf50-011.cnf,SAT,47.300000000000004,30.0,18256,True,SAT (given model verified)
+t2_dpllcpp,uf50-011.cnf,SAT,12.4,0.0,3648,True,SAT (given model verified)
+t2_rust,uf50-011.cnf,SAT,5.3,0.0,2784,True,SAT (given model verified)
+t1_david_mutas_dpll.py,uf50-011.cnf,SAT,26.8,20.0,10760,True,SAT (given model verified)
+t2_dpll_elixir,uf50-011.cnf,SAT,325.79999999999995,400.0,76624,True,SAT (given model verified)
+t2_rust_nonative,uf50-011.cnf,SAT,4.2,0.0,1884,True,SAT (given model verified)
+t3_dpll-solver-fl,uf50-011.cnf,SAT,8.3,0.0,8556,True,SAT (given model verified)
+cadical.py,uf50-0166.cnf,SAT,47.199999999999996,30.0,19216,True,SAT (given model verified)
+lingeling.py,uf50-0166.cnf,SAT,57.5,40.0,18972,True,SAT (given model verified)
+m22.py,uf50-0166.cnf,SAT,54.300000000000004,40.0,17896,True,SAT (given model verified)
+t2_dpllcpp,uf50-0166.cnf,SAT,9.700000000000001,0.0,3672,True,SAT (given model verified)
+t2_rust,uf50-0166.cnf,SAT,6.2,0.0,2656,True,SAT (given model verified)
+t1_david_mutas_dpll.py,uf50-0166.cnf,SAT,32.2,20.0,10732,True,SAT (given model verified)
+t2_dpll_elixir,uf50-0166.cnf,SAT,238.2,420.0,76676,True,SAT (given model verified)
+t2_rust_nonative,uf50-0166.cnf,SAT,4.1000000000000005,0.0,1960,True,SAT (given model verified)
+t3_dpll-solver-fl,uf50-0166.cnf,SAT,10.6,0.0,8680,True,SAT (given model verified)
+cadical.py,uuf50-010.cnf,UNSAT,44.8,30.0,18936,True,UNSAT
+lingeling.py,uuf50-010.cnf,UNSAT,44.5,30.0,18688,True,UNSAT
+m22.py,uuf50-010.cnf,UNSAT,49.6,30.0,18012,True,UNSAT
+t2_dpllcpp,uuf50-010.cnf,UNSAT,10.1,0.0,3648,True,UNSAT
+t2_rust,uuf50-010.cnf,UNSAT,4.1000000000000005,0.0,2540,True,UNSAT
+t1_david_mutas_dpll.py,uuf50-010.cnf,UNSAT,76.2,60.0,10680,True,UNSAT
+t2_dpll_elixir,uuf50-010.cnf,UNSAT,237.4,380.0,80960,True,UNSAT
+t2_rust_nonative,uuf50-010.cnf,UNSAT,6.1000000000000005,0.0,2060,True,UNSAT
+t3_dpll-solver-fl,uuf50-010.cnf,UNSAT,11.0,0.0,8784,True,UNSAT
+cadical.py,uf100-04.cnf,SAT,48.0,30.0,19032,True,SAT (given model verified)
+lingeling.py,uf100-04.cnf,SAT,47.1,30.0,18672,True,SAT (given model verified)
+m22.py,uf100-04.cnf,SAT,44.5,30.0,18068,True,SAT (given model verified)
+t2_dpllcpp,uf100-04.cnf,SAT,64.9,50.0,3728,True,SAT (given model verified)
+t2_rust,uf100-04.cnf,SAT,4.8999999999999995,0.0,2680,True,SAT (given model verified)
+t1_david_mutas_dpll.py,uf100-04.cnf,SAT,11560.4,11510.0,11584,True,SAT (given model verified)
+t2_dpll_elixir,uf100-04.cnf,SAT,234.3,460.0,84264,True,SAT (given model verified)
+t2_rust_nonative,uf100-04.cnf,SAT,6.2,0.0,1892,True,SAT (given model verified)
+t3_dpll-solver-fl,uf100-04.cnf,SAT,108.8,100.0,13560,True,SAT (given model verified)
+cadical.py,bw_anomaly.cnf,SAT,57.1,40.0,18724,True,SAT (given model verified)
+lingeling.py,bw_anomaly.cnf,SAT,48.800000000000004,30.0,18628,True,SAT (given model verified)
+m22.py,bw_anomaly.cnf,SAT,42.6,30.0,18268,True,SAT (given model verified)
+t2_dpllcpp,bw_anomaly.cnf,SAT,5.6,0.0,3648,True,SAT (given model verified)
+t2_rust,bw_anomaly.cnf,SAT,4.5,0.0,2724,True,SAT (given model verified)
+t1_david_mutas_dpll.py,bw_anomaly.cnf,SAT,23.5,10.0,10544,True,SAT (given model verified)
+t2_dpll_elixir,bw_anomaly.cnf,SAT,252.4,430.0,76568,True,SAT (given model verified)
+t2_rust_nonative,bw_anomaly.cnf,SAT,4.3,0.0,2032,True,SAT (given model verified)
+t3_dpll-solver-fl,bw_anomaly.cnf,SAT,9.700000000000001,0.0,8636,True,SAT (given model verified)
+cadical.py,bw_huge.cnf,SAT,61.800000000000004,40.0,21188,True,SAT (given model verified)
+lingeling.py,bw_huge.cnf,SAT,61.400000000000006,40.0,20352,True,SAT (given model verified)
+m22.py,bw_huge.cnf,SAT,54.199999999999996,40.0,19804,True,SAT (given model verified)
+t2_dpllcpp,bw_huge.cnf,SAT,100.2,90.0,3944,True,SAT (given model verified)
+t2_rust,bw_huge.cnf,SAT,9.5,0.0,3864,True,SAT (given model verified)
+t1_david_mutas_dpll.py,bw_huge.cnf,SAT,9419.800000000001,9350.0,23240,True,SAT (given model verified)
+t2_dpll_elixir,bw_huge.cnf,SAT,339.5,790.0,117508,True,SAT (given model verified)
+t2_rust_nonative,bw_huge.cnf,SAT,8.0,0.0,2004,True,SAT (given model verified)
+t3_dpll-solver-fl,bw_huge.cnf,SAT,782.1,840.0,26272,True,SAT (given model verified)
+cadical.py,bw_medium.cnf,SAT,47.6,30.0,19480,True,SAT (given model verified)
+lingeling.py,bw_medium.cnf,SAT,51.0,30.0,19140,True,SAT (given model verified)
+m22.py,bw_medium.cnf,SAT,47.4,30.0,18444,True,SAT (given model verified)
+t2_dpllcpp,bw_medium.cnf,SAT,7.2,0.0,3800,True,SAT (given model verified)
+t2_rust,bw_medium.cnf,SAT,7.3,0.0,2868,True,SAT (given model verified)
+t1_david_mutas_dpll.py,bw_medium.cnf,SAT,51.4,40.0,11400,True,SAT (given model verified)
+t2_dpll_elixir,bw_medium.cnf,SAT,271.7,540.0,80344,True,SAT (given model verified)
+t2_rust_nonative,bw_medium.cnf,SAT,5.1000000000000005,0.0,2008,True,SAT (given model verified)
+t3_dpll-solver-fl,bw_medium.cnf,SAT,17.4,10.0,11184,True,SAT (given model verified)
+cadical.py,uf225-097.cnf,SAT,153.0,140.0,19852,True,SAT (given model verified)
+lingeling.py,uf225-097.cnf,SAT,1193.8,1170.0,21876,True,SAT (given model verified)
+m22.py,uf225-097.cnf,SAT,182.2,170.0,18984,True,SAT (given model verified)
+t2_dpllcpp,uf225-097.cnf,TIMEOUT,30005.600000000002,29920.0,3416,False,TIMEOUT
+t2_rust,uf225-097.cnf,SAT,103.1,610.0,2732,True,SAT (given model verified)
+t1_david_mutas_dpll.py,uf225-097.cnf,TIMEOUT,30005.5,29790.0,13564,False,TIMEOUT
+t2_dpll_elixir,uf225-097.cnf,SAT,2555.8999999999996,17450.0,128900,True,SAT (given model verified)
+t2_rust_nonative,uf225-097.cnf,SAT,105.89999999999999,620.0,1764,True,SAT (given model verified)
+t3_dpll-solver-fl,uf225-097.cnf,TIMEOUT,30006.6,36600.0,13336,False,TIMEOUT
+cadical.py,uuf250-025.cnf,UNSAT,2758.9,2730.0,24192,True,UNSAT
+lingeling.py,uuf250-025.cnf,UNSAT,17926.9,17810.0,28012,True,UNSAT
+m22.py,uuf250-025.cnf,UNSAT,3008.6,2950.0,19252,True,UNSAT
+t2_dpllcpp,uuf250-025.cnf,TIMEOUT,30004.8,29900.0,3400,False,TIMEOUT
+t2_rust,uuf250-025.cnf,UNSAT,1951.2,12270.0,2904,True,UNSAT
+t1_david_mutas_dpll.py,uuf250-025.cnf,TIMEOUT,30005.5,29810.0,14212,False,TIMEOUT
+t2_dpll_elixir,uuf250-025.cnf,TIMEOUT,31094.8,225920.0,131816,False,TIMEOUT
+t2_rust_nonative,uuf250-025.cnf,UNSAT,2033.9999999999998,12640.0,1884,True,UNSAT
+t3_dpll-solver-fl,uuf250-025.cnf,TIMEOUT,30006.6,36950.0,13724,False,TIMEOUT
+cadical.py,arena_fast_unsat.cnf,UNSAT,56.599999999999994,30.0,18536,True,UNSAT
+lingeling.py,arena_fast_unsat.cnf,UNSAT,46.1,30.0,19020,True,UNSAT
+m22.py,arena_fast_unsat.cnf,UNSAT,45.0,30.0,17848,True,UNSAT
+t2_dpllcpp,arena_fast_unsat.cnf,UNSAT,4.5,0.0,3532,True,UNSAT
+t2_rust,arena_fast_unsat.cnf,UNSAT,4.6,0.0,2596,True,UNSAT
+t1_david_mutas_dpll.py,arena_fast_unsat.cnf,UNSAT,23.0,10.0,10340,True,UNSAT
+t2_dpll_elixir,arena_fast_unsat.cnf,UNSAT,231.6,410.0,73164,True,UNSAT
+t2_rust_nonative,arena_fast_unsat.cnf,UNSAT,4.2,0.0,1892,True,UNSAT
+t3_dpll-solver-fl,arena_fast_unsat.cnf,UNSAT,6.3,0.0,6432,True,UNSAT
+cadical.py,arena_pure_literal.cnf,SAT,45.8,30.0,18316,True,SAT (given model verified)
+lingeling.py,arena_pure_literal.cnf,SAT,43.1,30.0,18304,True,SAT (given model verified)
+m22.py,arena_pure_literal.cnf,SAT,44.699999999999996,30.0,18304,True,SAT (given model verified)
+t2_dpllcpp,arena_pure_literal.cnf,SAT,4.8,0.0,3660,True,SAT (given model verified)
+t2_rust,arena_pure_literal.cnf,SAT,5.0,0.0,2712,True,SAT (given model verified)
+t1_david_mutas_dpll.py,arena_pure_literal.cnf,SAT,22.5,10.0,10428,True,SAT (given model verified)
+t2_dpll_elixir,arena_pure_literal.cnf,SAT,213.10000000000002,370.0,74892,True,SAT (given model verified)
+t2_rust_nonative,arena_pure_literal.cnf,SAT,5.4,0.0,1704,True,SAT (given model verified)
+t3_dpll-solver-fl,arena_pure_literal.cnf,SAT,7.4,0.0,6396,True,SAT (given model verified)
+cadical.py,arena_unit_chain.cnf,SAT,51.4,30.0,18700,True,SAT (given model verified)
+lingeling.py,arena_unit_chain.cnf,SAT,48.300000000000004,30.0,18796,True,SAT (given model verified)
+m22.py,arena_unit_chain.cnf,SAT,46.5,30.0,18116,True,SAT (given model verified)
+t2_dpllcpp,arena_unit_chain.cnf,SAT,5.5,0.0,3672,True,SAT (given model verified)
+t2_rust,arena_unit_chain.cnf,SAT,5.6,0.0,2728,True,SAT (given model verified)
+t1_david_mutas_dpll.py,arena_unit_chain.cnf,SAT,22.9,10.0,10428,True,SAT (given model verified)
+t2_dpll_elixir,arena_unit_chain.cnf,SAT,227.5,390.0,75840,True,SAT (given model verified)
+t2_rust_nonative,arena_unit_chain.cnf,SAT,4.4,0.0,1964,True,SAT (given model verified)
+t3_dpll-solver-fl,arena_unit_chain.cnf,SAT,5.7,0.0,6436,True,SAT (given model verified)
+cadical.py,Gen_10Clique_150.cnf,SAT,1770.8,1620.0,361612,True,SAT (given model verified)
+lingeling.py,Gen_10Clique_150.cnf,SAT,7347.6,7210.0,261968,True,SAT (given model verified)
+m22.py,Gen_10Clique_150.cnf,SAT,1339.8000000000002,1250.0,250140,True,SAT (given model verified)
+t2_dpllcpp,Gen_10Clique_150.cnf,TIMEOUT,30006.9,29860.0,53136,False,TIMEOUT
+t2_rust,Gen_10Clique_150.cnf,SAT,2137.7000000000003,2060.0,106912,True,SAT (given model verified)
+t1_david_mutas_dpll.py,Gen_10Clique_150.cnf,TIMEOUT,30017.5,29300.0,466996,False,TIMEOUT
+t2_dpll_elixir,Gen_10Clique_150.cnf,TIMEOUT,31251.0,46270.0,2335716,False,TIMEOUT
+t2_rust_nonative,Gen_10Clique_150.cnf,UNSAT,114.4,60.0,98468,False,"Wrong Result (Expected SAT, Got UNSAT)"
+t3_dpll-solver-fl,Gen_10Clique_150.cnf,TIMEOUT,30014.9,34850.0,1048436,False,TIMEOUT
+cadical.py,Gen_12Clique_100.cnf,UNSAT,2155.0,2040.0,239688,True,UNSAT
+lingeling.py,Gen_12Clique_100.cnf,UNSAT,5108.4,5020.0,164836,True,UNSAT
+m22.py,Gen_12Clique_100.cnf,UNSAT,9212.1,9050.0,218816,True,UNSAT
+t2_dpllcpp,Gen_12Clique_100.cnf,TIMEOUT,30006.0,29830.0,44688,False,TIMEOUT
+t2_rust,Gen_12Clique_100.cnf,UNSAT,3387.2,3270.0,64292,True,UNSAT
+t1_david_mutas_dpll.py,Gen_12Clique_100.cnf,TIMEOUT,30013.5,29670.0,325504,False,TIMEOUT
+t2_dpll_elixir,Gen_12Clique_100.cnf,TIMEOUT,31182.4,44310.0,1450524,False,TIMEOUT
+t2_rust_nonative,Gen_12Clique_100.cnf,UNSAT,72.4,40.0,58788,True,UNSAT
+t3_dpll-solver-fl,Gen_12Clique_100.cnf,TIMEOUT,30017.600000000002,32270.000000000004,679824,False,TIMEOUT
+cadical.py,Gen_3Col_G_10_10.cnf,SAT,47.199999999999996,30.0,18780,True,SAT (given model verified)
+lingeling.py,Gen_3Col_G_10_10.cnf,SAT,61.1,40.0,18720,True,SAT (given model verified)
+m22.py,Gen_3Col_G_10_10.cnf,SAT,53.6,40.0,18080,True,SAT (given model verified)
+t2_dpllcpp,Gen_3Col_G_10_10.cnf,SAT,19.3,10.0,3712,True,SAT (given model verified)
+t2_rust,Gen_3Col_G_10_10.cnf,SAT,7.2,0.0,2792,True,SAT (given model verified)
+t1_david_mutas_dpll.py,Gen_3Col_G_10_10.cnf,SAT,67.2,50.0,12552,True,SAT (given model verified)
+t2_dpll_elixir,Gen_3Col_G_10_10.cnf,SAT,313.09999999999997,590.0,84332,True,SAT (given model verified)
+t2_rust_nonative,Gen_3Col_G_10_10.cnf,SAT,6.4,0.0,1968,True,SAT (given model verified)
+t3_dpll-solver-fl,Gen_3Col_G_10_10.cnf,SAT,50.4,10.0,11552,True,SAT (given model verified)
+cadical.py,Gen_3Col_large.cnf,UNSAT,64.19999999999999,50.0,19444,True,UNSAT
+lingeling.py,Gen_3Col_large.cnf,UNSAT,61.5,40.0,18872,True,UNSAT
+m22.py,Gen_3Col_large.cnf,UNSAT,57.6,40.0,18556,True,UNSAT
+t2_dpllcpp,Gen_3Col_large.cnf,UNSAT,322.5,310.0,3668,True,UNSAT
+t2_rust,Gen_3Col_large.cnf,UNSAT,6.6,0.0,3000,True,UNSAT
+t1_david_mutas_dpll.py,Gen_3Col_large.cnf,TIMEOUT,30005.0,29850.0,12884,False,TIMEOUT
+t2_dpll_elixir,Gen_3Col_large.cnf,UNSAT,280.3,600.0,87676,True,UNSAT
+t2_rust_nonative,Gen_3Col_large.cnf,UNSAT,7.1000000000000005,0.0,2008,True,UNSAT
+t3_dpll-solver-fl,Gen_3Col_large.cnf,UNSAT,551.9,560.0,11536,True,UNSAT
+cadical.py,Gen_Easy_1Sat.cnf,SAT,51.3,30.0,18700,True,SAT (given model verified)
+lingeling.py,Gen_Easy_1Sat.cnf,SAT,48.9,30.0,18592,True,SAT (given model verified)
+m22.py,Gen_Easy_1Sat.cnf,SAT,58.8,40.0,17952,True,SAT (given model verified)
+t2_dpllcpp,Gen_Easy_1Sat.cnf,SAT,6.8,0.0,3596,True,SAT (given model verified)
+t2_rust,Gen_Easy_1Sat.cnf,SAT,7.0,0.0,2736,True,SAT (given model verified)
+t1_david_mutas_dpll.py,Gen_Easy_1Sat.cnf,SAT,30.900000000000002,20.0,10512,True,SAT (given model verified)
+t2_dpll_elixir,Gen_Easy_1Sat.cnf,SAT,286.3,500.0,74668,True,SAT (given model verified)
+t2_rust_nonative,Gen_Easy_1Sat.cnf,SAT,4.8,0.0,1968,True,SAT (given model verified)
+t3_dpll-solver-fl,Gen_Easy_1Sat.cnf,SAT,6.7,0.0,6320,True,SAT (given model verified)
+cadical.py,Gen_Medium_3Sat.cnf,UNSAT,3323.6,3290.0,24296,True,UNSAT
+lingeling.py,Gen_Medium_3Sat.cnf,UNSAT,12425.3,12330.0,27544,True,UNSAT
+m22.py,Gen_Medium_3Sat.cnf,UNSAT,2051.0,2020.0,19100,True,UNSAT
+t2_dpllcpp,Gen_Medium_3Sat.cnf,TIMEOUT,30004.8,29940.0,3456,False,TIMEOUT
+t2_rust,Gen_Medium_3Sat.cnf,UNSAT,1791.1,9410.0,2872,True,UNSAT
+t1_david_mutas_dpll.py,Gen_Medium_3Sat.cnf,TIMEOUT,30005.1,29850.0,13548,False,TIMEOUT
+t2_dpll_elixir,Gen_Medium_3Sat.cnf,TIMEOUT,31056.7,212480.0,128148,False,TIMEOUT
+t2_rust_nonative,Gen_Medium_3Sat.cnf,UNSAT,1820.5,9650.0,1968,True,UNSAT
+t3_dpll-solver-fl,Gen_Medium_3Sat.cnf,TIMEOUT,30006.9,36640.0,13664,False,TIMEOUT
+cadical.py,Gen_OP_20.cnf,UNSAT,76.5,50.0,21008,True,UNSAT
+lingeling.py,Gen_OP_20.cnf,UNSAT,92.1,70.0,20640,True,UNSAT
+m22.py,Gen_OP_20.cnf,UNSAT,2357.0,2330.0,32608,True,UNSAT
+t2_dpllcpp,Gen_OP_20.cnf,TIMEOUT,30005.9,29890.0,3784,False,TIMEOUT
+t2_rust,Gen_OP_20.cnf,TIMEOUT,30005.3,236690.0,3836,False,TIMEOUT
+t1_david_mutas_dpll.py,Gen_OP_20.cnf,TIMEOUT,30006.6,29820.0,37292,False,TIMEOUT
+t2_dpll_elixir,Gen_OP_20.cnf,TIMEOUT,31078.0,209780.0,218272,False,TIMEOUT
+t2_rust_nonative,Gen_OP_20.cnf,TIMEOUT,30005.199999999997,237290.0,1768,False,TIMEOUT
+t3_dpll-solver-fl,Gen_OP_20.cnf,TIMEOUT,30010.100000000002,40700.0,41140,False,TIMEOUT
+cadical.py,Gen_PHP_5_4.cnf,UNSAT,45.3,30.0,18876,True,UNSAT
+lingeling.py,Gen_PHP_5_4.cnf,UNSAT,42.7,20.0,19056,True,UNSAT
+m22.py,Gen_PHP_5_4.cnf,UNSAT,41.8,20.0,17840,True,UNSAT
+t2_dpllcpp,Gen_PHP_5_4.cnf,UNSAT,5.7,0.0,3656,True,UNSAT
+t2_rust,Gen_PHP_5_4.cnf,UNSAT,4.8999999999999995,0.0,2800,True,UNSAT
+t1_david_mutas_dpll.py,Gen_PHP_5_4.cnf,UNSAT,23.3,10.0,10432,True,UNSAT
+t2_dpll_elixir,Gen_PHP_5_4.cnf,UNSAT,249.9,460.0,75640,True,UNSAT
+t2_rust_nonative,Gen_PHP_5_4.cnf,UNSAT,3.5,0.0,1968,True,UNSAT
+t3_dpll-solver-fl,Gen_PHP_5_4.cnf,UNSAT,7.8,0.0,6656,True,UNSAT
+cadical.py,Gen_PHP_XOR.cnf,UNSAT,1193.8999999999999,1170.0,22156,True,UNSAT
+lingeling.py,Gen_PHP_XOR.cnf,UNSAT,3826.2,3770.0,24972,True,UNSAT
+m22.py,Gen_PHP_XOR.cnf,UNSAT,3501.2,3470.0,19328,True,UNSAT
+t2_dpllcpp,Gen_PHP_XOR.cnf,TIMEOUT,30005.4,29890.0,3356,False,TIMEOUT
+t2_rust,Gen_PHP_XOR.cnf,TIMEOUT,30004.7,237390.0,2644,False,TIMEOUT
+t1_david_mutas_dpll.py,Gen_PHP_XOR.cnf,TIMEOUT,30005.199999999997,29930.0,11860,False,TIMEOUT
+t2_dpll_elixir,Gen_PHP_XOR.cnf,TIMEOUT,31113.1,233410.0,111020,False,TIMEOUT
+t2_rust_nonative,Gen_PHP_XOR.cnf,TIMEOUT,30005.0,29930.0,1964,False,TIMEOUT
+t3_dpll-solver-fl,Gen_PHP_XOR.cnf,TIMEOUT,30007.100000000002,33820.0,14088,False,TIMEOUT
+cadical.py,Gen_Rand_3SAT_100v.cnf,SAT,44.0,30.0,18888,True,SAT (given model verified)
+lingeling.py,Gen_Rand_3SAT_100v.cnf,SAT,44.2,30.0,19252,True,SAT (given model verified)
+m22.py,Gen_Rand_3SAT_100v.cnf,SAT,44.6,30.0,18012,True,SAT (given model verified)
+t2_dpllcpp,Gen_Rand_3SAT_100v.cnf,SAT,20.8,10.0,3700,True,SAT (given model verified)
+t2_rust,Gen_Rand_3SAT_100v.cnf,SAT,6.6,0.0,2796,True,SAT (given model verified)
+t1_david_mutas_dpll.py,Gen_Rand_3SAT_100v.cnf,SAT,49.0,40.0,11244,True,SAT (given model verified)
+t2_dpll_elixir,Gen_Rand_3SAT_100v.cnf,SAT,245.4,470.0,83428,True,SAT (given model verified)
+t2_rust_nonative,Gen_Rand_3SAT_100v.cnf,SAT,6.5,0.0,1768,True,SAT (given model verified)
+t3_dpll-solver-fl,Gen_Rand_3SAT_100v.cnf,SAT,411.2,420.0,11788,True,SAT (given model verified)
+cadical.py,Gen_Stone.cnf,UNSAT,749.3,720.0,27360,True,UNSAT
+lingeling.py,Gen_Stone.cnf,UNSAT,1282.1,1250.0,26004,True,UNSAT
+m22.py,Gen_Stone.cnf,UNSAT,3834.1,3790.0,36720,True,UNSAT
+t2_dpllcpp,Gen_Stone.cnf,TIMEOUT,30006.0,29910.0,4084,False,TIMEOUT
+t2_rust,Gen_Stone.cnf,TIMEOUT,30006.0,237010.0,4876,False,TIMEOUT
+t1_david_mutas_dpll.py,Gen_Stone.cnf,TIMEOUT,30012.8,29400.0,151952,False,TIMEOUT
+t2_dpll_elixir,Gen_Stone.cnf,TIMEOUT,31066.1,207220.0,257540,False,TIMEOUT
+t2_rust_nonative,Gen_Stone.cnf,TIMEOUT,30005.199999999997,237490.0,2888,False,TIMEOUT
+t3_dpll-solver-fl,Gen_Stone.cnf,TIMEOUT,30011.199999999997,53910.0,159684,False,TIMEOUT
+cadical.py,Gen_Tseitin.cnf,SAT,59.8,40.0,18712,True,SAT (given model verified)
+lingeling.py,Gen_Tseitin.cnf,SAT,53.5,40.0,18764,True,SAT (given model verified)
+m22.py,Gen_Tseitin.cnf,SAT,65.8,50.0,18320,True,SAT (given model verified)
+t2_dpllcpp,Gen_Tseitin.cnf,SAT,67.2,60.0,3792,True,SAT (given model verified)
+t2_rust,Gen_Tseitin.cnf,SAT,6.4,0.0,2964,True,SAT (given model verified)
+t1_david_mutas_dpll.py,Gen_Tseitin.cnf,SAT,105.2,80.0,18292,True,SAT (given model verified)
+t2_dpll_elixir,Gen_Tseitin.cnf,SAT,291.8,600.0,85128,True,SAT (given model verified)
+t2_rust_nonative,Gen_Tseitin.cnf,SAT,7.0,0.0,1888,True,SAT (given model verified)
+t3_dpll-solver-fl,Gen_Tseitin.cnf,SAT,1732.9,2470.0,22788,True,SAT (given model verified)
+cadical.py,uf75-098.cnf,SAT,65.19999999999999,40.0,18900,True,SAT (given model verified)
+lingeling.py,uf75-098.cnf,SAT,60.1,40.0,18744,True,SAT (given model verified)
+m22.py,uf75-098.cnf,SAT,53.199999999999996,40.0,18296,True,SAT (given model verified)
+t2_dpllcpp,uf75-098.cnf,SAT,52.900000000000006,40.0,3700,True,SAT (given model verified)
+t2_rust,uf75-098.cnf,SAT,6.1000000000000005,0.0,2820,True,SAT (given model verified)
+t1_david_mutas_dpll.py,uf75-098.cnf,SAT,725.6,710.0,11052,True,SAT (given model verified)
+t2_dpll_elixir,uf75-098.cnf,SAT,286.7,540.0,84928,True,SAT (given model verified)
+t2_rust_nonative,uf75-098.cnf,SAT,5.8,0.0,1888,True,SAT (given model verified)
+t3_dpll-solver-fl,uf75-098.cnf,SAT,26.1,10.0,11108,True,SAT (given model verified)
+cadical.py,uf75-099.cnf,SAT,58.7,40.0,19040,True,SAT (given model verified)
+lingeling.py,uf75-099.cnf,SAT,60.8,40.0,18688,True,SAT (given model verified)
+m22.py,uf75-099.cnf,SAT,58.3,40.0,18652,True,SAT (given model verified)
+t2_dpllcpp,uf75-099.cnf,SAT,31.7,20.0,3920,True,SAT (given model verified)
+t2_rust,uf75-099.cnf,SAT,6.1000000000000005,0.0,2736,True,SAT (given model verified)
+t1_david_mutas_dpll.py,uf75-099.cnf,SAT,1451.4,1430.0,11124,True,SAT (given model verified)
+t2_dpll_elixir,uf75-099.cnf,SAT,295.59999999999997,590.0,75860,True,SAT (given model verified)
+t2_rust_nonative,uf75-099.cnf,SAT,6.2,0.0,1968,True,SAT (given model verified)
+t3_dpll-solver-fl,uf75-099.cnf,SAT,27.2,10.0,13272,True,SAT (given model verified)
+cadical.py,uf75-100.cnf,SAT,60.5,40.0,18764,True,SAT (given model verified)
+lingeling.py,uf75-100.cnf,SAT,55.599999999999994,40.0,18980,True,SAT (given model verified)
+m22.py,uf75-100.cnf,SAT,58.3,40.0,18408,True,SAT (given model verified)
+t2_dpllcpp,uf75-100.cnf,SAT,30.200000000000003,20.0,3660,True,SAT (given model verified)
+t2_rust,uf75-100.cnf,SAT,8.1,0.0,2772,True,SAT (given model verified)
+t1_david_mutas_dpll.py,uf75-100.cnf,SAT,1050.7,1000.0,11064,True,SAT (given model verified)
+t2_dpll_elixir,uf75-100.cnf,SAT,294.20000000000005,550.0,81632,True,SAT (given model verified)
+t2_rust_nonative,uf75-100.cnf,SAT,4.6,0.0,1884,True,SAT (given model verified)
+t3_dpll-solver-fl,uf75-100.cnf,SAT,12.5,0.0,10852,True,SAT (given model verified)
+cadical.py,uuf150-073.cnf,UNSAT,90.6,70.0,19588,True,UNSAT
+lingeling.py,uuf150-073.cnf,UNSAT,217.29999999999998,200.0,19296,True,UNSAT
+m22.py,uuf150-073.cnf,UNSAT,63.70000000000001,50.0,18136,True,UNSAT
+t2_dpllcpp,uuf150-073.cnf,UNSAT,2525.7000000000003,2510.0,3728,True,UNSAT
+t2_rust,uuf150-073.cnf,UNSAT,16.299999999999997,30.0,2828,True,UNSAT
+t1_david_mutas_dpll.py,uuf150-073.cnf,TIMEOUT,30006.0,29710.0,13032,False,TIMEOUT
+t2_dpll_elixir,uuf150-073.cnf,UNSAT,672.5,2080.0,106020,True,UNSAT
+t2_rust_nonative,uuf150-073.cnf,UNSAT,13.2,20.0,1768,True,UNSAT
+t3_dpll-solver-fl,uuf150-073.cnf,UNSAT,3922.0,4140.0,13572,True,UNSAT
+cadical.py,uuf150-074.cnf,UNSAT,66.8,50.0,19284,True,UNSAT
+lingeling.py,uuf150-074.cnf,UNSAT,97.0,80.0,19192,True,UNSAT
+m22.py,uuf150-074.cnf,UNSAT,49.9,30.0,18428,True,UNSAT
+t2_dpllcpp,uuf150-074.cnf,UNSAT,2405.0,2390.0,3792,True,UNSAT
+t2_rust,uuf150-074.cnf,UNSAT,22.4,20.0,2748,True,UNSAT
+t1_david_mutas_dpll.py,uuf150-074.cnf,TIMEOUT,30005.3,29720.0,12544,False,TIMEOUT
+t2_dpll_elixir,uuf150-074.cnf,UNSAT,598.7,1620.0,100808,True,UNSAT
+t2_rust_nonative,uuf150-074.cnf,UNSAT,13.4,20.0,1968,True,UNSAT
+t3_dpll-solver-fl,uuf150-074.cnf,UNSAT,3811.0,4010.0,13724,True,UNSAT
+cadical.py,uuf150-077.cnf,UNSAT,97.10000000000001,70.0,19580,True,UNSAT
+lingeling.py,uuf150-077.cnf,UNSAT,262.40000000000003,240.0,19596,True,UNSAT
+m22.py,uuf150-077.cnf,UNSAT,56.800000000000004,40.0,18528,True,UNSAT
+t2_dpllcpp,uuf150-077.cnf,UNSAT,3942.5,3920.0,3724,True,UNSAT
+t2_rust,uuf150-077.cnf,UNSAT,18.0,30.0,2852,True,UNSAT
+t1_david_mutas_dpll.py,uuf150-077.cnf,TIMEOUT,30006.6,29740.0,12740,False,TIMEOUT
+t2_dpll_elixir,uuf150-077.cnf,UNSAT,832.0,3030.0,106348,True,UNSAT
+t2_rust_nonative,uuf150-077.cnf,UNSAT,24.9,30.0,2064,True,UNSAT
+t3_dpll-solver-fl,uuf150-077.cnf,UNSAT,7363.1,7820.0,13740,True,UNSAT
+cadical.py,php9.cnf,UNSAT,2945.3999999999996,2910.0,24784,True,UNSAT
+lingeling.py,php9.cnf,UNSAT,7166.7,7090.0,23900,True,UNSAT
+m22.py,php9.cnf,UNSAT,2195.3,2170.0,18944,True,UNSAT
+t2_dpllcpp,php9.cnf,UNSAT,29867.8,29780.0,3796,True,UNSAT
+t2_rust,php9.cnf,UNSAT,748.0,4130.0,2648,True,UNSAT
+t1_david_mutas_dpll.py,php9.cnf,TIMEOUT,30005.199999999997,29920.0,11768,False,TIMEOUT
+t2_dpll_elixir,php9.cnf,UNSAT,23397.8,37310.0,97620,True,UNSAT
+t2_rust_nonative,php9.cnf,UNSAT,2249.1,2220.0,1832,True,UNSAT
+t3_dpll-solver-fl,php9.cnf,UNSAT,17657.6,18220.0,13744,True,UNSAT
+cadical.py,php10.cnf,TIMEOUT,30006.699999999997,29670.0,41320,False,TIMEOUT
+lingeling.py,php10.cnf,TIMEOUT,30006.0,29830.0,29776,False,TIMEOUT
+m22.py,php10.cnf,TIMEOUT,30006.699999999997,29780.0,20856,False,TIMEOUT
+t2_dpllcpp,php10.cnf,TIMEOUT,30005.0,29920.0,3444,False,TIMEOUT
+t2_rust,php10.cnf,UNSAT,8195.2,53110.0,2652,True,UNSAT
+t1_david_mutas_dpll.py,php10.cnf,TIMEOUT,30005.3,29880.0,12052,False,TIMEOUT
+t2_dpll_elixir,php10.cnf,TIMEOUT,31035.9,142180.0,105124,False,TIMEOUT
+t2_rust_nonative,php10.cnf,UNSAT,26219.899999999998,38980.0,1968,True,UNSAT
+t3_dpll-solver-fl,php10.cnf,TIMEOUT,30006.5,31200.0,14016,False,TIMEOUT
+cadical.py,uf250-013.cnf,ERROR,84.3,60.0,21764,False,"Wrong Result (Expected SAT, Got ERROR)"
+lingeling.py,uf250-013.cnf,UNSAT,48.4,40.0,18808,False,"Wrong Result (Expected SAT, Got UNSAT)"
+m22.py,uf250-013.cnf,UNSAT,54.9,40.0,18336,False,"Wrong Result (Expected SAT, Got UNSAT)"
+t2_dpllcpp,uf250-013.cnf,TIMEOUT,30005.199999999997,29930.0,3352,False,TIMEOUT
+t2_rust,uf250-013.cnf,SAT,714.7,5380.0,3080,False,Invalid Model (Clause [] failed)
+t1_david_mutas_dpll.py,uf250-013.cnf,ERROR,62.300000000000004,50.0,13600,False,"Wrong Result (Expected SAT, Got ERROR)"
+t2_dpll_elixir,uf250-013.cnf,SAT,29090.2,204870.0,135084,False,Invalid Model (Clause [] failed)
+t2_rust_nonative,uf250-013.cnf,SAT,727.3,5590.0,1964,False,Invalid Model (Clause [] failed)
+t3_dpll-solver-fl,uf250-013.cnf,TIMEOUT,30007.7,36580.0,13292,False,TIMEOUT
